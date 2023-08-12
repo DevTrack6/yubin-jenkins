@@ -9,13 +9,6 @@ pipeline {
                         sh 'ls -al'
                     }
                 }
-                stage("checkout") {
-                    steps {
-                        sh 'echo "checkout"'
-                        checkout scm
-                        sh 'ls -al'
-                    }
-                }
                 stage("hello2") {
                     steps {
                         sh 'echo "hello2"'
