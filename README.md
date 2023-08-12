@@ -1,3 +1,1 @@
 # yubin-jenkins
-
-test
