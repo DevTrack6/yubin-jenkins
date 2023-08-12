@@ -1,9 +1,34 @@
 pipeline {
-    agent { docker { image 'python:3.11.4-alpine3.18' } }
+    agent any
     stages {
-        stage('build') {
+        stage('hello') {
+            parallel {
+                stage("hello1") {
+                    steps {
+                        sh 'echo "hello1"'
+                    }
+                }
+                stage("hello2") {
+                    steps {
+                        sh 'echo "hello2"'
+                    }
+                }
+            }
             steps {
-                sh 'python --version'
+                sh 'echo "hello"'
+            }
+        }
+        stage("checkout") {
+            steps {
+                sh 'echo "checkout"'
+                checkout scm
+                sh 'ls -al'
+            }
+        }
+        stage("test") {
+            steps {
+                sh 'echo "test"'
+                sh 'ls -al'
             }
         }
     }
