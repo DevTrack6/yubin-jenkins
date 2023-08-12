@@ -6,20 +6,22 @@ pipeline {
                 stage("hello1") {
                     steps {
                         sh 'echo "hello1"'
+                        sh 'ls -al'
+                    }
+                }
+                stage("checkout") {
+                    steps {
+                        sh 'echo "checkout"'
+                        checkout scm
+                        sh 'ls -al'
                     }
                 }
                 stage("hello2") {
                     steps {
                         sh 'echo "hello2"'
+                        sh 'ls -al'
                     }
                 }
-            }
-        }
-        stage("checkout") {
-            steps {
-                sh 'echo "checkout"'
-                checkout scm
-                sh 'ls -al'
             }
         }
         stage("test") {
