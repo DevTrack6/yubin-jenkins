@@ -21,11 +21,23 @@ pipeline {
             steps {
                 sh 'echo "test"'
                 sh 'ls -al'
+                sh 'exit 1'
             }
         }
     }
     post{
         success{
+            emailext body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:\n\nCheck console output at $BUILD_URL to view the results.',
+                     subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!',
+                     to: 'munu220@naver.com'
+            discordSend title: "$JOB_NAME - Build # $BUILD_NUMBER - ${currentBuild.currentResult}!",
+                footer: "Footer Text",
+                link: "$BUILD_URL",
+                description: "$JOB_NAME - Build # $BUILD_NUMBER - ${currentBuild.currentResult}!",
+                result: "${currentBuild.currentResult}",
+                webhookURL: "https://discord.com/api/webhooks/1140308683058856056/oPhCM7KlWKNeHVeELupNKMFMmtXpiOkmyGxxWjoRPX6l7zLlryOyY3OBNZgcbw8O-R0D"
+        }
+        failure{
             emailext body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:\n\nCheck console output at $BUILD_URL to view the results.',
                      subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!',
                      to: 'munu220@naver.com'
