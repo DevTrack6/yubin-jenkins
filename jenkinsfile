@@ -23,5 +23,8 @@ pipeline {
                 sh 'ls -al'
             }
         }
+}
+    always{
+        emailext to: "naivetechblog@gmail.com",
     }
 }
