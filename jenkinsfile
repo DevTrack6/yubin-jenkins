@@ -26,9 +26,7 @@ pipeline {
     }
     post{
         always{
-            emailext body: 'Test Message',
-                subject: 'Test Subject',
-                to: 'munu220@gmail.com'
+            emailext to: 'munu220@gmail.com'
         }
     }
 }
