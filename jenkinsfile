@@ -28,7 +28,7 @@ pipeline {
         success{
             emailext body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:\n\nCheck console output at $BUILD_URL to view the results.',
                      subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!',
-                     to: 'munu220@gmail.com'
+                     to: 'munu220@naver.com'
         }
     }
 }
