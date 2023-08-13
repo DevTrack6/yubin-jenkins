@@ -23,8 +23,12 @@ pipeline {
                 sh 'ls -al'
             }
         }
-}
-    always{
-        emailext to: "naivetechblog@gmail.com",
+    }
+    post{
+        always{
+            emailext to: "naivetechblog@gmail.com",
+            subject: "Test Email",
+            body: "Test"
+        }
     }
 }
