@@ -31,7 +31,7 @@ pipeline {
                      to: 'munu220@naver.com'
             discordSend title: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!',
                 footer: "Footer Text",
-                link: "$BUILD_UR",
+                link: "$BUILD_URL",
                 description: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!",
                 result: "$BUILD_STATUS",
                 webhookURL: "https://discord.com/api/webhooks/1140308683058856056/oPhCM7KlWKNeHVeELupNKMFMmtXpiOkmyGxxWjoRPX6l7zLlryOyY3OBNZgcbw8O-R0D"
