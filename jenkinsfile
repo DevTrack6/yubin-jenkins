@@ -29,7 +29,7 @@ pipeline {
             emailext body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:\n\nCheck console output at $BUILD_URL to view the results.',
                      subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!',
                      to: 'munu220@naver.com'
-            discordSend title: '$JOB_NAME - Build # $BUILD_NUMBER - ${currentBuild.currentResult}!',
+            discordSend title: "$JOB_NAME - Build # $BUILD_NUMBER - ${currentBuild.currentResult}!",
                 footer: "Footer Text",
                 link: "$BUILD_URL",
                 description: "$JOB_NAME - Build # $BUILD_NUMBER - ${currentBuild.currentResult}!",
