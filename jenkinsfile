@@ -24,11 +24,4 @@ pipeline {
             }
         }
     }
-    post{
-        always{
-            mail to: "munu220@naver.com",
-            subject: "Test Email",
-            body: "Test"
-        }
-    }
 }
