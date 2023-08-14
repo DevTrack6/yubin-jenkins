@@ -23,6 +23,13 @@ pipeline {
                         sh 'python test.py'
                     }
                 }
+                stage("get output"){
+                    agent any
+                    steps{
+                        def myOutput = sh(script: 'echo Hello World', returnStdout: true).trim()
+                        echo "Captured output: ${myOutput}"
+                    }
+                }
             }
         }
         stage("test") {
@@ -35,9 +42,6 @@ pipeline {
     }
     post{
         success{
-            emailext body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:\n\nCheck console output at $BUILD_URL to view the results.',
-                     subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!',
-                     to: 'munu220@naver.com'
             discordSend title: "$JOB_NAME - Build # $BUILD_NUMBER - ${currentBuild.currentResult}!",
                         footer: "Footer Text",
                         link: "$BUILD_URL",
