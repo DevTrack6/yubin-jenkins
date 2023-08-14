@@ -1,7 +1,8 @@
 pipeline {
-    agent any
+    agent none
     stages {
         stage('hello') {
+            agent any
             parallel {
                 stage("hello1") {
                     steps {
@@ -21,7 +22,6 @@ pipeline {
             steps {
                 sh 'echo "test"'
                 sh 'ls -al'
-                sh 'exit 1'
             }
         }
     }
