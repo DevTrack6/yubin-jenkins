@@ -2,15 +2,16 @@ pipeline {
     agent none
     stages {
         stage('hello') {
-            agent any
             parallel {
                 stage("hello1") {
+                    agent any
                     steps {
                         sh 'echo "hello1"'
                         sh 'ls -al'
                     }
                 }
                 stage("hello2") {
+                    agent any
                     steps {
                         sh 'echo "hello2"'
                         sh 'ls -al'
@@ -19,6 +20,7 @@ pipeline {
             }
         }
         stage("test") {
+            agent any
             steps {
                 sh 'echo "test"'
                 sh 'ls -al'
