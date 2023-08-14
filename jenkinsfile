@@ -26,8 +26,10 @@ pipeline {
                 stage("get output"){
                     agent any
                     steps{
-                        def myOutput = sh(script: 'echo Hello World', returnStdout: true).trim()
-                        echo "Captured output: ${myOutput}"
+                        script {
+                            def myOutput = sh(script: 'echo Hello World', returnStdout: true).trim()
+                            echo "Captured output: ${myOutput}"
+                        }
                     }
                 }
             }
