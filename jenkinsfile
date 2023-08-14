@@ -4,17 +4,23 @@ pipeline {
         stage('hello') {
             parallel {
                 stage("hello1") {
-                    agent any
+                    agent {
+                        docker {
+                            image 'python:3.10'
+                        }
+                    }
                     steps {
-                        sh 'echo "hello1"'
-                        sh 'ls -al'
+                        sh 'python --version'
                     }
                 }
                 stage("hello2") {
-                    agent any
+                    agent {
+                        docker {
+                            image 'python:3.11'
+                        }
+                    }
                     steps {
-                        sh 'echo "hello2"'
-                        sh 'ls -al'
+                        sh 'python test.py'
                     }
                 }
             }
